@@ -35,6 +35,24 @@ dependencies {
     // https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client
     implementation 'org.mariadb.jdbc:mariadb-java-client:3.5.3'
 
+    // 3
+    // lombok , get/set/toString/ 기본 기능 편의 도구.
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+
+    // 컴파일 단위, 테스트 단위, 2개 설정 예시
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.38'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.38'
+
+    // test, 단위 테스트에서도, 사용하기.
+    testCompileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.38'
+    testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.38'
+
+    // 4
+    // Hikari Cp 설치
+    // https://mvnrepository.com/artifact/com.zaxxer/HikariCP
+    implementation group: 'com.zaxxer', name: 'HikariCP', version: '6.3.0'
+
+
 
 }
 
