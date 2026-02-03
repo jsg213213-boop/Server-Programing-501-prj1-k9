@@ -92,5 +92,14 @@ public class _0203_5_TodoDAOTests {
 
     }
 
+    // 삭제
+    @Test
+    public void testDeleteOne() throws Exception {
+        // 삭제할 번호를 알고 있다. 각자 디비에 있는 tno 번호를 이용하기.
+        // 예시 tno = 4L
+        Long tno = 4L;
+        todoDAO.deleteOne(tno);
+    }
+
 
 }

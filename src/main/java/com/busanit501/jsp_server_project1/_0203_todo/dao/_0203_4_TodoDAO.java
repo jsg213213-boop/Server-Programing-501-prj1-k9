@@ -185,5 +185,24 @@ public class _0203_4_TodoDAO {
         preparedStatement.executeUpdate();
     }
 
+    //삭제하기.
+    // 삭제할 tno 번호를 알고 있음.
+    public void deleteOne(Long tno) throws Exception {
+        // tno = 4 번 삭제하기.
+        // 글쓰기, 수정하기, 거의 비슷, 수정하기를 코드 복붙해서, sql 수정해서 사용하기.
+        String sql = "delete from tbl_todo where tno = ?";
+        // 디비 서버에 연결하는 도구 설정.(반복)
+        @Cleanup Connection connection = _0203_3_ConnectionUtil.INSTANCE.getConnection();
+        // sql 문장을 담아 두는 기능 (반복)
+        @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        // values (?, ? ,?) 값 지정 해주기.
+        preparedStatement.setLong(1, tno);
+
+        // sql 문장을 디비 서버에 전달. 쓰기, 수정, 삭제 : executeUpdate()
+        // 조회 : executeQuery();
+        preparedStatement.executeUpdate();
+
+    }
+
 
 } //_0203_4_TodoDAO 닫기
