@@ -1,8 +1,10 @@
 package com.busanit501.jsp_server_project1._0203_todo.dao;
 
+import com.busanit501.jsp_server_project1._0203_todo.domain._0203_1_TodoVO;
 import lombok.Cleanup;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -48,6 +50,24 @@ public class _0203_4_TodoDAO {
             String now = resultSet.getString(1);
 
         return now;
+    }
+
+    //등록하기.
+    // _0203_1_TodoVO vo 여기 객체에는 , 화면에서, 입력한 내용을 담고 있음.
+    // 화면상에는 제목만 입력 할 예정(수동), tno 번호(자동), 완료여부(수동), 날짜(수동)
+    public void insert(_0203_1_TodoVO vo) throws  Exception {
+        // sql 문장 작성,
+        String sql = "insert into tbl_todo (title, dueDate, finished) values (?, ? ,?)";
+        // 디비 서버에 연결하는 도구 설정.
+        @Cleanup Connection connection = _0203_3_ConnectionUtil.INSTANCE.getConnection();
+        // sql 문장을 담아 두는 기능
+        @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        // values (?, ? ,?) 값 지정 해주기.
+        preparedStatement.setString(1, vo.getTitle());
+        preparedStatement.setDate(2, Date.valueOf(vo.getDueDate()));
+        preparedStatement.setBoolean(3, vo.isFinished());
+        // sql 문장을 디비 서버에 전달.
+        preparedStatement.executeUpdate();
     }
 
 

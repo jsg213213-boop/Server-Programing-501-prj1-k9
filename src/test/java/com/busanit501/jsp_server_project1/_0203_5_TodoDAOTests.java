@@ -22,7 +22,7 @@ public class _0203_5_TodoDAOTests {
     // 실제 테스트, 메서드
     @Test
     public void testTime() throws Exception {
-        System.out.println("현재 시간 : " + todoDAO.getTime());
+        System.out.println("현재 시간 : " + todoDAO.getTime2());
     }
 
 }
