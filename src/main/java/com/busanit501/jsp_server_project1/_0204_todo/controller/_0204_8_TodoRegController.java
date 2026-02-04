@@ -14,7 +14,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 @Log4j2
-@WebServlet(name="_2_todoRegController", urlPatterns = "/todo/register")
+@WebServlet(name="_0204_8_TodoRegController", urlPatterns = "/todo/register_0204")
 public class _0204_8_TodoRegController extends HttpServlet {
     // 2가지 기능을 제공
     // 1) 화면 제공, 2) 글쓰기 작업 수행.

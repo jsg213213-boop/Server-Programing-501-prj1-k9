@@ -5,6 +5,9 @@
     <title>Title</title>
 </head>
 <body>
+<div>
+    <a href="f/todo/register_0204">글쓰기</a>
+</div>
  <ul>
      <c:forEach var="dto" items="${dtoList}">
          <li>
