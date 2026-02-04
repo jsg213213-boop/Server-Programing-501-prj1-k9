@@ -48,6 +48,7 @@ public enum _0204_4_TodoService {
         dao.insert(todoVO);
     }
     // 목록조회
+    // 이전 코드
     public List<_0204_1_TodoDTO> getList() {
         // 하드코딩, 더미 데이터로, 10개만 샘플 등록,
         // 반복문으로
@@ -63,6 +64,28 @@ public enum _0204_4_TodoService {
         ).collect(Collectors.toList());// mapToObj 닫기 태그, 반복문으로 각각의 todo 객체를 생성해서, 리스트로 만들기.
         return todoDTOS;
     } //getList 닫기
+
+    // 변경 코드
+    // 전체 목록 조회 , 실제 데이터베이스에 가져오기.
+    public List<_0204_1_TodoDTO> listAll() throws Exception {
+        // 하드코딩, 더미 데이터로, 10개만 샘플 등록,
+        List<_0204_2_TodoVO> voList = dao.selectAll();
+        log.info("voList 확인 : " + voList);
+
+        // DAO 로 데이터베이스에 데이터를 가져오면, 타입을 _0204_2_TodoVO 타입으로 받음
+        // 화면에 전달하기 위해서, DTO 타입으로 변환 ,
+        // 변환작업.
+        // 작업 순서
+        // 1) voList 에 있는 모든 요소를 순회합니다.
+        // 2) 리스트에서, 요소를 하나씩 꺼내서, vo -> dto 타입으로 변환합니다. 모든 요소를.
+        // 3) 변환된 요소들을 묶어서, 리스트로 변경합니다.
+        // 4) 재할당. ->  List<_0204_1_TodoDTO> dtoList
+        List<_0204_1_TodoDTO> dtoList = voList.stream()
+                .map(vo -> modelMapper.map(vo,_0204_1_TodoDTO.class))
+                .collect(Collectors.toList());
+
+        return dtoList;
+    } //listAll 닫기
 
     // 0202_모델클래스_서비스_컨트롤러를_이용한_로직 처리_순서5
     //Todo 조회
