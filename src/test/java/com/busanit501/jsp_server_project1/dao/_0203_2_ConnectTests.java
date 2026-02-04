@@ -1,4 +1,4 @@
-package com.busanit501.jsp_server_project1;
+package com.busanit501.jsp_server_project1.dao;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
