@@ -2,9 +2,11 @@ package com.busanit501.jsp_server_project1._0205_todo.dao;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import lombok.extern.log4j.Log4j2;
 
 import java.sql.Connection;
 
+@Log4j2
 public enum _0205_9_ConnectionUtil {
 
     INSTANCE;
@@ -35,6 +37,14 @@ public enum _0205_9_ConnectionUtil {
 
     public Connection getConnection() throws  Exception {
         return ds.getConnection();
+    }
+
+    // 닫는 메서드 추가.
+    public void closePool() {
+        if (ds != null && !ds.isClosed()) {
+            ds.close(); // 풀 전체 종료
+            log.info("HikariCP 커넥션 풀을 종료했습니다.");
+        }
     }
 
 }
