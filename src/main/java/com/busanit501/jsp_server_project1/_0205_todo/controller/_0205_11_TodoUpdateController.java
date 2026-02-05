@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 @Log4j2
@@ -58,6 +59,39 @@ public class _0205_11_TodoUpdateController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+        // 받을 때 한글 설정,
+        req.setCharacterEncoding("UTF-8");
 
+        // 주의사항,
+        // 수정시, 완료 여부, 체크박스 변수명 : finished 넘어옴, 문자열 체크 되면 : "on"
+        // 화면으로부터 전달받은 데이터를 모두 가져오고, 이상태는 모두 문자열임.
+        // 그래서, dto 에 담을 때 각 타입에 맞게 변형해서 담기.
+        String finishedStr = req.getParameter("finished");
+        String tno = req.getParameter("tno");
+        String title = req.getParameter("title");
+        String dueDate = req.getParameter("dueDate");
+
+        // 수정할 내용을 받은 상태, 수정된 내용으로 , 서비스에게 일을 시키기.
+        // 넘어온 데이터를 dto 담기.
+        _0205_2_TodoDTO todoDTO = _0205_2_TodoDTO.builder()
+                .tno(Long.parseLong(tno))
+                .title(title)
+                // dueDate 문자열 -> LocalDate 타입으로 변경하고, 원하는 포맷팅 :yyyy-MM-dd
+                .dueDate(LocalDate.parse(dueDate,DATEFORMATTER))
+                .finished(finishedStr != null && finishedStr.equals("on"))
+                .build();
+
+        log.info("화면으로 전달 받은 , 수정할 내용 확인 todoDTO: " + todoDTO);
+        try {
+            // 보낼 때 한글 설정,
+            // 나중에, 서버에 한번만 설정해서, 따로 설정 없이, 이용만 하면됨.
+            resp.setContentType("text/html;charset=UTF-8");
+            resp.setCharacterEncoding("UTF-8");
+
+            todoService.modify(todoDTO);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        resp.sendRedirect("/todo/list_0205");
     }
 }
