@@ -69,7 +69,7 @@ public class _0205_7_TodoRegController extends HttpServlet {
             e.printStackTrace();
         }
 
-        resp.sendRedirect("/todo/list_0204");
+        resp.sendRedirect("/todo/list_0205");
 
     }
 

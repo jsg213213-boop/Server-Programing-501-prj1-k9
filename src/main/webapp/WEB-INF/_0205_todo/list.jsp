@@ -6,7 +6,7 @@
 </head>
 <body>
 <div>
-    <a href="/todo/register_0204">글쓰기</a>
+    <a href="/todo/register_0205">글쓰기</a>
 </div>
  <ul>
      <c:forEach var="dto" items="${dtoList}">
