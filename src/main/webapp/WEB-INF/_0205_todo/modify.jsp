@@ -37,7 +37,7 @@
     </div>
 </form>
 <%--삭제폼--%>
-<form id="form2" action="/todo/remove_0205" method="post">
+<form id="form2" action="/todo/delete_0205" method="post">
 <%--    삭제시 삭제할 tno 번호를 같이 전달 해야하므로, 숨겨서 보내기--%>
     <input type="hidden" name="tno" value="${dto.tno}" readonly>
     <div>
