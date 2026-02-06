@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -38,31 +37,31 @@ public class _0206_10_TodoRegController extends HttpServlet {
 
         log.info("/todo/register, 글작성 폼 임시화면 get으로 요청 처리함. ");
 
-        //0206 , 글쓰기 화면에 접근하기 전에, 세션에서 로그인 유저를 체크를해서,
-        // JSESSIONID 를 체크. 있으면 진행. 없으면 로그인 페이지로 이동시키자.
-
-        // 세션를 이용하기 위해서, 도구가 필요함. 객체를 이용하기.
-        HttpSession session = req.getSession();
-
-        // 기존에 접근 이용자인지? 새로운 이용자 인지? 여부 확인을 JSESSIONID
-        if(session.isNew()){
-            // 새로운 이용자이니, 서버 : JSESSIONID 생성해서, 서버 메모리에 가지고 있고,
-            // 그리고, 웹 브라우저에게, 쿠키에 담아서, 보내기.
-            log.info("JSESSIONID 쿠키가 새롭게 만들어진 사용자");
-            // 새로 오셨네요? , 로그인 페이지로 가서, 로그인 해주세요. -> 아직 없음, 곧 만들 예정.
-            resp.sendRedirect("/login");
-        }
-
-        // 임시 로그인 처리라서,
-        // JSESSIONID 있어요, 해당 서버에 완전 최초 접속자는 아니예요.
-        // 세션이라는 공간에 loginInfo 라는 이름으로 저장을 할예정, 로그인한 유저를 .
-        if(session.getAttribute("loginInfo") == null) {
-            log.info("로그인 정보가 없는 사용자입니다.");
-            resp.sendRedirect("/login");
-            return;
-        }
-
-        // JSESSIONID 있고, loginInfo(명단), 로그인한 유저 정보가 있어요, -> 로그인 되었다고 가정.
+//        //0206 , 글쓰기 화면에 접근하기 전에, 세션에서 로그인 유저를 체크를해서,
+//        // JSESSIONID 를 체크. 있으면 진행. 없으면 로그인 페이지로 이동시키자.
+//
+//        // 세션를 이용하기 위해서, 도구가 필요함. 객체를 이용하기.
+//        HttpSession session = req.getSession();
+//
+//        // 기존에 접근 이용자인지? 새로운 이용자 인지? 여부 확인을 JSESSIONID
+//        if(session.isNew()){
+//            // 새로운 이용자이니, 서버 : JSESSIONID 생성해서, 서버 메모리에 가지고 있고,
+//            // 그리고, 웹 브라우저에게, 쿠키에 담아서, 보내기.
+//            log.info("JSESSIONID 쿠키가 새롭게 만들어진 사용자");
+//            // 새로 오셨네요? , 로그인 페이지로 가서, 로그인 해주세요. -> 아직 없음, 곧 만들 예정.
+//            resp.sendRedirect("/login");
+//        }
+//
+//        // 임시 로그인 처리라서,
+//        // JSESSIONID 있어요, 해당 서버에 완전 최초 접속자는 아니예요.
+//        // 세션이라는 공간에 loginInfo 라는 이름으로 저장을 할예정, 로그인한 유저를 .
+//        if(session.getAttribute("loginInfo") == null) {
+//            log.info("로그인 정보가 없는 사용자입니다.");
+//            resp.sendRedirect("/login");
+//            return;
+//        }
+//
+//        // JSESSIONID 있고, loginInfo(명단), 로그인한 유저 정보가 있어요, -> 로그인 되었다고 가정.
         // 정상적으로 글쓰기 페이지로 안내.
         req.getRequestDispatcher("/WEB-INF/_0206_todo/todoReg.jsp").forward(req,resp);
 
