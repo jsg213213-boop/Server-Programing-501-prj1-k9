@@ -2,6 +2,7 @@ package com.busanit501.jsp_server_project1.springex_0213_keep.controller;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -41,6 +42,15 @@ public class SampleController {
     public void ex3(LocalDate dueDate) {
         log.info("ex3 ~~~");
         log.info("데이터 수집 : dueDate : " + dueDate);
+    }
+
+    // http://localhost:8080/ex3?dueDate=2026-02-13
+    @GetMapping("/ex4")
+    public void ex4(Model model) {
+        log.info("ex4 ~~~");
+        log.info("데이터 받아서 화면에 전달하자 ");
+        //화면에 데이터 전달하기. model 를 이용해서,
+        model.addAttribute("msg", "hello~~");
     }
 
 }
