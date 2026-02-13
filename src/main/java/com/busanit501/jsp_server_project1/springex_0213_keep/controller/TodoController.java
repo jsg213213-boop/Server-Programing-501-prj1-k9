@@ -1,4 +1,4 @@
-package com.busanit501.jsp_server_project1.springex_0213.controller;
+package com.busanit501.jsp_server_project1.springex_0213_keep.controller;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 // http://localhost:8080/todo/ 관련된 업무는 내가 처리할게.
-@RequestMapping("/todo")
+@RequestMapping("/todo2")
 @Log4j2
 public class TodoController {
 

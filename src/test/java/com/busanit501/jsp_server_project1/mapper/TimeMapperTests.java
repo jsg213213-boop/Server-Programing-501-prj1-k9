@@ -1,7 +1,7 @@
 package com.busanit501.jsp_server_project1.mapper;
 
 
-import com.busanit501.jsp_server_project1.springex_0213.mapper.TimeMapper2;
+import com.busanit501.jsp_server_project1.springex_0213_keep.mapper.TimeMapper2;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

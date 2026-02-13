@@ -1,4 +1,4 @@
-package com.busanit501.jsp_server_project1.springex_0213.mapper;
+package com.busanit501.jsp_server_project1.springex_0213_keep.mapper;
 
 import org.apache.ibatis.annotations.Select;
 

@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--인텔리제이에서, 해당 경로 복사, , 해당 파일 우클릭, 참조 경로/복사해서, 맨밑에 -->
 <!--구분자가 점으로 된걸 이용하기.-->
-<mapper namespace="com.busanit501.jsp_server_project1.springex_0213.mapper.TimeMapper2">
+<mapper namespace="com.busanit501.jsp_server_project1.springex_0213_keep.mapper.TimeMapper2">
     <select id="getNow" resultType="string">
         select now()
     </select>

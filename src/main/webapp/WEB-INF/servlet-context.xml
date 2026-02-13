@@ -31,6 +31,6 @@
     </bean>
 
     <!--    자바의 애너테이션으로 @Controller 이용할려면, 등록된 파일의 위치 패키지를 시스템에게 알려줘야함. -->
-    <context:component-scan base-package="com.busanit501.jsp_server_project1.springex_0213.controller"/>
+    <context:component-scan base-package="com.busanit501.jsp_server_project1.springex_0213_keep.controller"/>
 
 </beans>
