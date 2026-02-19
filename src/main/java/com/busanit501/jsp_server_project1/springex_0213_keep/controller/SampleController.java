@@ -80,5 +80,14 @@ public class SampleController {
 
     }
 
+    @GetMapping("/ex7")
+    // 예외 포인트는 화면에서 전달하는 값은 기본 무조건 문자열임.
+    // 그런데, 받을 때, 임의로 숫자 타입으로 받고 있음.
+    // 예외가 발생되는 부분.
+    public void ex7(String p1, int p2) {
+        log.info("p1 : " + p1);
+        log.info("p2 : " + p2);
+    }
+
 
 }
