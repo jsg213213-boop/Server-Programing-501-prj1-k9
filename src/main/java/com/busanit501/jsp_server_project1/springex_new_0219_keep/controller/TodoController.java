@@ -1,6 +1,8 @@
 package com.busanit501.jsp_server_project1.springex_new_0219_keep.controller;
 
 import com.busanit501.jsp_server_project1.springex_new_0219_keep.dto.TodoDTO;
+import com.busanit501.jsp_server_project1.springex_new_0219_keep.service.TodoService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -15,7 +17,10 @@ import javax.validation.Valid;
 // http://localhost:8080/todo2/ 관련된 업무는 내가 처리할게.
 @RequestMapping("/todo2")
 @Log4j2
+@RequiredArgsConstructor
 public class TodoController {
+
+    private final TodoService todoService;
 
     // http://localhost:8080/todo2/list
     // 뷰 리졸버가 연결되어서,
@@ -47,6 +52,10 @@ public class TodoController {
             redirectAttributes.addFlashAttribute("errors",bindingResult.getAllErrors());
             return "redirect:/todo2/register";
         }
+
+        // 서비스의 도움을 받아서, 화면으로 부터 전달 받은 데이터를 전달하기.
+        todoService.register(todoDTO);
+
         log.info(" 유효성 통과한 데이터 todoDTO : " + todoDTO);
         return "redirect:/todo2/list";
     }
