@@ -34,6 +34,6 @@ public class TodoController {
     public String postRegister(TodoDTO todoDTO, RedirectAttributes redirectAttributes) {
         log.info("todo register..post");
         log.info("todoDTO : " + todoDTO);
-        return "redirect:/todo2/list";
+        return "redirect:list";
     }
 }
