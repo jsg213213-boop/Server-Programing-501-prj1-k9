@@ -62,8 +62,10 @@
                     </div>
                     <div class="card-body">
                         <form action="/todo2/register" method="post">
-                            <div>
-                                Title: <input type="text" name="title" placeholder="todo 제목을 입력해주세요">
+<%--                            부트스트랩 이용중이고, 폼 컨트롤 하나씩 적용해보기.--%>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Title:</span>
+                                <input class="form-control" type="text" name="title" placeholder="todo 제목을 입력해주세요">
                             </div>
                             <div>
                                 DueDate: <input type="date" name="dueDate">
