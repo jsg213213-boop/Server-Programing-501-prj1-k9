@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Log4j2 // 로그를 기록 하는데, 어떤 기준으로 하나요? 로그레벨
 // info, debug , warning
@@ -37,5 +38,12 @@ public class TodoMapperTests {
                 .writer("이상용")
                 .build();
         todoMapper.insert(todoVO);
+    }
+
+    @Test
+    public void testSelectAll() {
+        List<TodoVO> voList = todoMapper.selectAll();
+        voList.forEach(vo -> log.info(vo));
+
     }
 }
